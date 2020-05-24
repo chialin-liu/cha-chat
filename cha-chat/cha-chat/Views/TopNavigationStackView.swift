@@ -22,7 +22,7 @@ class TopNavigationStackView: UIStackView {
         addArrangedSubview(right)
         self.distribution = .fillEqually
         self.translatesAutoresizingMaskIntoConstraints = false
-        self.heightAnchor.constraint(equalToConstant: 100).isActive = true
+        self.heightAnchor.constraint(equalToConstant: 80).isActive = true
         
     }
     

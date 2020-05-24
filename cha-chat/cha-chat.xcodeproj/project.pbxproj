@@ -15,6 +15,7 @@
 		F3838F19247A9C6700E3E7AF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F3838F17247A9C6700E3E7AF /* LaunchScreen.storyboard */; };
 		F3838F27247AA88B00E3E7AF /* HomeBottomControllerStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3838F26247AA88B00E3E7AF /* HomeBottomControllerStackView.swift */; };
 		F3838F29247AB29D00E3E7AF /* TopNavigationStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3838F28247AB29D00E3E7AF /* TopNavigationStackView.swift */; };
+		F3838F2B247ABA9500E3E7AF /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3838F2A247ABA9500E3E7AF /* CardView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		F3838F1A247A9C6700E3E7AF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F3838F26247AA88B00E3E7AF /* HomeBottomControllerStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeBottomControllerStackView.swift; sourceTree = "<group>"; };
 		F3838F28247AB29D00E3E7AF /* TopNavigationStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopNavigationStackView.swift; sourceTree = "<group>"; };
+		F3838F2A247ABA9500E3E7AF /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +79,7 @@
 			children = (
 				F3838F26247AA88B00E3E7AF /* HomeBottomControllerStackView.swift */,
 				F3838F28247AB29D00E3E7AF /* TopNavigationStackView.swift */,
+				F3838F2A247ABA9500E3E7AF /* CardView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -156,6 +159,7 @@
 				F3838F27247AA88B00E3E7AF /* HomeBottomControllerStackView.swift in Sources */,
 				F3838F29247AB29D00E3E7AF /* TopNavigationStackView.swift in Sources */,
 				F3838F0D247A9C6600E3E7AF /* AppDelegate.swift in Sources */,
+				F3838F2B247ABA9500E3E7AF /* CardView.swift in Sources */,
 				F3838F0F247A9C6600E3E7AF /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
