@@ -23,30 +23,39 @@ class ViewController: UIViewController {
         stackView.distribution = .fillEqually
         return stackView
     }
-    
+    func setupBotStackView() -> UIStackView {
+        let stackView = UIStackView()
+        let left = UIView()
+        left.backgroundColor = .lightGray
+        let right = UIView()
+        right.backgroundColor = .black
+        stackView.addArrangedSubview(left)
+        stackView.addArrangedSubview(right)
+        stackView.distribution = .fillEqually
+        return stackView
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
         let topStackView = setupTopStackView()
         let blue = UIView()
-        let yellow = UIView()
+        let botStackView = setupBotStackView()
         topStackView.backgroundColor = .red
         topStackView.heightAnchor.constraint(equalToConstant: 100).isActive = true
-        yellow.heightAnchor.constraint(equalToConstant: 120).isActive = true
+        botStackView.heightAnchor.constraint(equalToConstant: 120).isActive = true
         blue.backgroundColor = .blue
-        yellow.backgroundColor = .yellow
+        botStackView.backgroundColor = .yellow
         let stackView = UIStackView()
         stackView.addArrangedSubview(topStackView)
         stackView.addArrangedSubview(blue)
-        stackView.addArrangedSubview(yellow)
+        stackView.addArrangedSubview(botStackView)
         view.addSubview(stackView)
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
         stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         stackView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
-//        stackView.distribution = .fillEqually
         stackView.axis = .vertical
     }
 
