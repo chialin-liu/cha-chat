@@ -66,12 +66,12 @@
 		F3838F0B247A9C6600E3E7AF /* cha-chat */ = {
 			isa = PBXGroup;
 			children = (
+				F3838F32247BEF2900E3E7AF /* Controllers */,
 				F3838F2F247BD4AC00E3E7AF /* Extensions */,
 				F3838F2C247B539600E3E7AF /* Models */,
 				F3838F25247AA84500E3E7AF /* Views */,
 				F3838F0C247A9C6600E3E7AF /* AppDelegate.swift */,
 				F3838F0E247A9C6600E3E7AF /* SceneDelegate.swift */,
-				F3838F10247A9C6600E3E7AF /* HomeController.swift */,
 				F3838F12247A9C6600E3E7AF /* Main.storyboard */,
 				F3838F15247A9C6700E3E7AF /* Assets.xcassets */,
 				F3838F17247A9C6700E3E7AF /* LaunchScreen.storyboard */,
@@ -104,6 +104,14 @@
 				F3838F30247BD4BA00E3E7AF /* UIView.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		F3838F32247BEF2900E3E7AF /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				F3838F10247A9C6600E3E7AF /* HomeController.swift */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

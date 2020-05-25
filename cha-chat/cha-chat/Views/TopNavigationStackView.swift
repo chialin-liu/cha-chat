@@ -14,12 +14,12 @@ class TopNavigationStackView: UIStackView {
     let right = UIButton(type: .system)
     override init(frame: CGRect) {
         super.init(frame: frame)
-        left.setImage(UIImage(systemName: "person")?.withRenderingMode(.alwaysOriginal), for: .normal)
+        left.setImage(UIImage(systemName: "list.bullet")?.withRenderingMode(.alwaysOriginal), for: .normal)
         mid.setImage(UIImage(systemName: "house")?.withRenderingMode(.alwaysOriginal), for: .normal)
-        right.setImage(UIImage(systemName: "message")?.withRenderingMode(.alwaysOriginal), for: .normal)
+//        right.setImage(UIImage(systemName: "message")?.withRenderingMode(.alwaysOriginal), for: .normal)
         addArrangedSubview(left)
         addArrangedSubview(mid)
-        addArrangedSubview(right)
+//        addArrangedSubview(right)
         self.distribution = .fillEqually
         self.translatesAutoresizingMaskIntoConstraints = false
         self.heightAnchor.constraint(equalToConstant: 80).isActive = true

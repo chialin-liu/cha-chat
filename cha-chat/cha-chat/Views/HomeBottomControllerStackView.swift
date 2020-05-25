@@ -12,9 +12,9 @@ class HomeBottomControllerStackView: UIStackView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         let left = UIButton(type: .system)
-        left.setImage(UIImage(systemName: "xmark")?.withRenderingMode(.alwaysOriginal), for: .normal)
+        left.setImage(UIImage(systemName: "hand.thumbsup")?.withRenderingMode(.alwaysOriginal), for: .normal)
         let right = UIButton(type: .system)
-        right.setImage(UIImage(systemName: "heart.fill")?.withRenderingMode(.alwaysOriginal), for: .normal)
+        right.setImage(UIImage(systemName: "hand.thumbsdown")?.withRenderingMode(.alwaysOriginal), for: .normal)
         addArrangedSubview(left)
         addArrangedSubview(right)
         self.distribution = .fillEqually

@@ -159,16 +159,16 @@ class CardView: UIView {
         dinner.textAlignment = .center
     }
     fileprivate func handleEnded(_ gesture: UIPanGestureRecognizer) {
-        var rightDismiss = false
-        var leftDismiss = false
+        var upDismiss = false
+        var downDismiss = false
         let translation = gesture.translation(in: self)
-        rightDismiss = translation.x > threshold ? true: false
-        leftDismiss = translation.x * -1 > threshold ? true: false
+        upDismiss = translation.y * -1 > threshold ? true: false
+        downDismiss = translation.y > threshold ? true: false
         UIView.animate(withDuration: 0.8, delay: 0, options: .curveEaseOut, animations: {
-            if rightDismiss {
-                self.transform = CGAffineTransform(translationX: 1000, y: 0)
-            } else if leftDismiss {
-                self.transform = CGAffineTransform(translationX: -1000, y: 0)
+            if upDismiss {
+                self.transform = CGAffineTransform(translationX: 0, y: -1000)
+            } else if downDismiss {
+                self.transform = CGAffineTransform(translationX: 0, y: 1000)
             } else {
                 self.transform = CGAffineTransform.identity
             }

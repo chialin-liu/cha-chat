@@ -15,6 +15,10 @@ class HomeController: UIViewController {
     let users = [
         User(name: "Thor", age: 24, profession: "Hero", imageName: "thor", jogging: false, movie: false, afterNoonTea: true, travel: false, chatFirst: true, dinner: true, star: "天秤"),
         User(name: "Tony", age: 30, profession: "IronMan", imageName: "tony", jogging: true, movie: true, afterNoonTea: true, travel: false, chatFirst: true, dinner: true, star: "天蠍"),
+        User(name: "Thor", age: 24, profession: "Hero", imageName: "thor", jogging: false, movie: false, afterNoonTea: true, travel: false, chatFirst: false, dinner: true, star: "天秤"),
+        User(name: "Tony", age: 30, profession: "IronMan", imageName: "tony", jogging: false, movie: false, afterNoonTea: true, travel: false, chatFirst: true, dinner: true, star: "天蠍"),
+        User(name: "Thor", age: 24, profession: "Hero", imageName: "thor", jogging: false, movie: false, afterNoonTea: true, travel: false, chatFirst: true, dinner: false, star: "天秤"),
+        User(name: "Tony", age: 30, profession: "IronMan", imageName: "tony", jogging: false, movie: false, afterNoonTea: false, travel: false, chatFirst: false, dinner: true, star: "天蠍"),
     ]
     fileprivate func setupMainStackView() {
         let stackView = UIStackView()
