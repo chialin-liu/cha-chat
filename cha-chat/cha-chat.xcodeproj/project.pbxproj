@@ -18,6 +18,7 @@
 		F3838F2B247ABA9500E3E7AF /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3838F2A247ABA9500E3E7AF /* CardView.swift */; };
 		F3838F2E247B53A100E3E7AF /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3838F2D247B53A100E3E7AF /* User.swift */; };
 		F3838F31247BD4BA00E3E7AF /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3838F30247BD4BA00E3E7AF /* UIView.swift */; };
+		F3838F35247C102C00E3E7AF /* CardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3838F34247C102C00E3E7AF /* CardViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		F3838F2A247ABA9500E3E7AF /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		F3838F2D247B53A100E3E7AF /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		F3838F30247BD4BA00E3E7AF /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
+		F3838F34247C102C00E3E7AF /* CardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +68,7 @@
 		F3838F0B247A9C6600E3E7AF /* cha-chat */ = {
 			isa = PBXGroup;
 			children = (
+				F3838F33247C101900E3E7AF /* ViewModels */,
 				F3838F32247BEF2900E3E7AF /* Controllers */,
 				F3838F2F247BD4AC00E3E7AF /* Extensions */,
 				F3838F2C247B539600E3E7AF /* Models */,
@@ -112,6 +115,14 @@
 				F3838F10247A9C6600E3E7AF /* HomeController.swift */,
 			);
 			path = Controllers;
+			sourceTree = "<group>";
+		};
+		F3838F33247C101900E3E7AF /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				F3838F34247C102C00E3E7AF /* CardViewModel.swift */,
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -193,6 +204,7 @@
 				F3838F2B247ABA9500E3E7AF /* CardView.swift in Sources */,
 				F3838F0F247A9C6600E3E7AF /* SceneDelegate.swift in Sources */,
 				F3838F2E247B53A100E3E7AF /* User.swift in Sources */,
+				F3838F35247C102C00E3E7AF /* CardViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

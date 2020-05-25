@@ -12,13 +12,9 @@ class HomeController: UIViewController {
     let topStackView = TopNavigationStackView()
     let botStackView = HomeBottomControllerStackView()
     let cardsDeckView = UIView()
-    let users = [
-        User(name: "Thor", age: 24, profession: "Hero", imageName: "thor", jogging: false, movie: false, afterNoonTea: true, travel: false, chatFirst: true, dinner: true, star: "天秤"),
-        User(name: "Tony", age: 30, profession: "IronMan", imageName: "tony", jogging: true, movie: true, afterNoonTea: true, travel: false, chatFirst: true, dinner: true, star: "天蠍"),
-        User(name: "Thor", age: 24, profession: "Hero", imageName: "thor", jogging: false, movie: false, afterNoonTea: true, travel: false, chatFirst: false, dinner: true, star: "天秤"),
-        User(name: "Tony", age: 30, profession: "IronMan", imageName: "tony", jogging: false, movie: false, afterNoonTea: true, travel: false, chatFirst: true, dinner: true, star: "天蠍"),
-        User(name: "Thor", age: 24, profession: "Hero", imageName: "thor", jogging: false, movie: false, afterNoonTea: true, travel: false, chatFirst: true, dinner: false, star: "天秤"),
-        User(name: "Tony", age: 30, profession: "IronMan", imageName: "tony", jogging: false, movie: false, afterNoonTea: false, travel: false, chatFirst: false, dinner: true, star: "天蠍"),
+    let cardViewModels = [
+        User(name: "Thor", age: 24, profession: "Hero", imageName: "thor", jogging: false, movie: false, travel: false, chatFirst: false, food: true, star: "天秤").toCardViewModel(),
+        User(name: "Tony", age: 30, profession: "IronMan", imageName: "tony", jogging: true, movie: false, travel: false, chatFirst: false, food: false, star: "天蠍").toCardViewModel()
     ]
     fileprivate func setupMainStackView() {
         let stackView = UIStackView()
@@ -39,9 +35,9 @@ class HomeController: UIViewController {
 //        stackView.layoutMargins = .init(top: 0, left: 10, bottom: 0, right: 10)
     }
     func setupCard() {
-        for user in users {
+        for carViewModel in cardViewModels {
             let cardView = CardView()
-            cardView.user = user
+            cardView.cardViewModel = carViewModel
             cardsDeckView.addSubview(cardView)
             cardView.topAnchor.constraint(equalTo: cardsDeckView.topAnchor).isActive = true
             cardView.leadingAnchor.constraint(equalTo: cardsDeckView.leadingAnchor, constant: 10).isActive = true
