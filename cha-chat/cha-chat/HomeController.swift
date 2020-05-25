@@ -8,10 +8,14 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class HomeController: UIViewController {
     let topStackView = TopNavigationStackView()
     let botStackView = HomeBottomControllerStackView()
     let cardsDeckView = UIView()
+    let users = [
+        User(name: "Thor", age: 24, profession: "Hero", imageName: "thor", jogging: false, movie: false, afterNoonTea: true, travel: false, chatFirst: true, dinner: true, star: "天秤"),
+        User(name: "Tony", age: 30, profession: "IronMan", imageName: "tony", jogging: true, movie: true, afterNoonTea: true, travel: false, chatFirst: true, dinner: true, star: "天蠍"),
+    ]
     fileprivate func setupMainStackView() {
         let stackView = UIStackView()
         stackView.addArrangedSubview(topStackView)
@@ -31,12 +35,15 @@ class ViewController: UIViewController {
 //        stackView.layoutMargins = .init(top: 0, left: 10, bottom: 0, right: 10)
     }
     func setupCard() {
-        let cardView = CardView()
-        cardsDeckView.addSubview(cardView)
-        cardView.topAnchor.constraint(equalTo: cardsDeckView.topAnchor).isActive = true
-        cardView.leadingAnchor.constraint(equalTo: cardsDeckView.leadingAnchor, constant: 10).isActive = true
-        cardView.trailingAnchor.constraint(equalTo: cardsDeckView.trailingAnchor, constant: -10).isActive = true
-        cardView.bottomAnchor.constraint(equalTo: cardsDeckView.bottomAnchor).isActive = true
+        for user in users {
+            let cardView = CardView()
+            cardView.user = user
+            cardsDeckView.addSubview(cardView)
+            cardView.topAnchor.constraint(equalTo: cardsDeckView.topAnchor).isActive = true
+            cardView.leadingAnchor.constraint(equalTo: cardsDeckView.leadingAnchor, constant: 10).isActive = true
+            cardView.trailingAnchor.constraint(equalTo: cardsDeckView.trailingAnchor, constant: -10).isActive = true
+            cardView.bottomAnchor.constraint(equalTo: cardsDeckView.bottomAnchor).isActive = true
+        }
     }
     override func viewDidLoad() {
         super.viewDidLoad()
