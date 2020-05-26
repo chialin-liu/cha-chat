@@ -49,40 +49,80 @@ class HomeController: UIViewController {
             cardView.bottomAnchor.constraint(equalTo: cardsDeckView.bottomAnchor).isActive = true
         }
     }
+    fileprivate func setupMenu() {
+        menu.view.frame = CGRect(x: -menuWidth, y: 0, width: menuWidth, height: self.view.frame.height)
+        //method 1
+//        let keyWindow = UIApplication.shared.windows.filter {$0.isKeyWindow}.first
+//        keyWindow?.addSubview(menu.view)
+//        let mainWindow = UIApplication.shared.keyWindow
+//        mainWindow?.addSubview(menu.view)
+        //method 2
+        view.addSubview(menu.view)
+        //used to solve problem
+        addChild(menu)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         topStackView.leftButton.addTarget(self, action: #selector(handleSetting), for: .touchUpInside)
         topStackView.midButton.addTarget(self, action: #selector(handleHome), for: .touchUpInside)
-        
-        
         setupMainStackView()
         setupCard()
+        setupMenu()
+        //pan gesture
+        let panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePan))
+        view.addGestureRecognizer(panGesture)
+    }
+    @objc func handlePan(gesture: UIPanGestureRecognizer) {
+        let translation = gesture.translation(in: view)
+        if gesture.state == .changed {
+            
+            var x = translation.x
+            if isMenuOpen {
+                x += menuWidth
+            }
+            x = min(menuWidth, x)
+            x = max(0, x)
+            let transform = CGAffineTransform(translationX: x, y: 0)
+//            menu.view.transform = transform
+            view.transform = transform
+        } else if gesture.state == .ended {
+            if isMenuOpen {
+                if abs(translation.x) < menuWidth / 3 {
+                    handleSetting()
+                } else {
+                    handleHome()
+                }
+            } else {
+                if translation.x < menuWidth / 3 {
+                    handleHome()
+                } else {
+                    handleSetting()
+                }
+            }
+        }
         
     }
-    @objc func handleHome() {
+    var isMenuOpen = false
+    func performeAnimations(transform: CGAffineTransform) {
         UIView.animate(withDuration: 0.5) {
-            self.menu.view.transform = .identity
+            self.view.transform = transform
+//            self.menu.view.transform = transform
+            
+            
         }
+    }
+    @objc func handleHome() {
+        performeAnimations(transform: .identity)
+        isMenuOpen = false
 //        menu.removeFromParent()
 //        menu.view.removeFromSuperview()
     }
     @objc func handleSetting() {
-        menu.view.frame = CGRect(x: -menuWidth, y: 0, width: menuWidth, height: self.view.frame.height)
-        UIView.animate(withDuration: 0.5) {
-            //method 1
-//            self.menu.view.frame = CGRect(x: 0, y: 0, width: self.menuWidth, height: self.view.frame.height)
-            //method 2
-            self.menu.view.transform = CGAffineTransform(translationX: self.menuWidth, y: 0)
-        }
-        //method 1
-//        let keyWindow = UIApplication.shared.windows.filter {$0.isKeyWindow}.first
-//        keyWindow?.addSubview(menu.view)
-        //method 2
-        view.addSubview(menu.view)
-        //used to solve problem
-        addChild(menu)
-        
+//        setupMenu()
+        performeAnimations(transform: CGAffineTransform(translationX: self.menuWidth, y: 0))
+        isMenuOpen = true
     }
 
 
