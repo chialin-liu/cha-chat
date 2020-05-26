@@ -13,8 +13,10 @@ class HomeController: UIViewController {
     let botStackView = HomeBottomControllerStackView()
     let cardsDeckView = UIView()
     let cardViewModels = [
-        User(name: "Thor", age: 24, profession: "Hero", imageName: "thor", jogging: false, movie: false, travel: false, chatFirst: false, food: true, star: "天秤").toCardViewModel(),
-        User(name: "Tony", age: 30, profession: "IronMan", imageName: "tony", jogging: true, movie: false, travel: false, chatFirst: false, food: false, star: "天蠍").toCardViewModel()
+        User(name: "Thor", age: 24, profession: "Thunder", imageName: ["thor", "thor2"], jogging: false, movie: false, travel: false, chatFirst: false, food: true, star: "天秤").toCardViewModel(),
+        User(name: "Tony", age: 30, profession: "IronMan", imageName: ["tony", "tony2", "tony3"], jogging: true, movie: false, travel: false, chatFirst: false, food: false, star: "天蠍").toCardViewModel(),
+        User(name: "Cris", age: 30, profession: "Captain", imageName: ["cap"], jogging: false, movie: false, travel: false, chatFirst: false, food: true, star: "巨蠍").toCardViewModel(),
+//        User(name: "ABC", age: 20, profession: "ABC", imageName: "questionmark", jogging: false, movie: true, travel: false, chatFirst: false, food: false, star: "天蠍").toCardViewModel()
     ]
     fileprivate func setupMainStackView() {
         let stackView = UIStackView()

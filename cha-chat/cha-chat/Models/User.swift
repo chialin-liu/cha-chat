@@ -35,7 +35,7 @@ struct User {
     let name: String
     let age: Int
     let profession: String
-    let imageName: String
+    let imageName: [String]
     let jogging: Bool
     let movie: Bool
     let travel: Bool
