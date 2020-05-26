@@ -11,6 +11,8 @@ import UIKit
 class HomeController: UIViewController {
     let topStackView = TopNavigationStackView()
     let botStackView = HomeBottomControllerStackView()
+    let menu = MenuTableViewController()
+    let menuWidth: CGFloat = 300
     let cardsDeckView = UIView()
     let cardViewModels = [
         User(name: "Thor", age: 24, profession: "Thunder", imageName: ["thor", "thor2"], jogging: false, movie: false, travel: false, chatFirst: false, food: true, star: "天秤").toCardViewModel(),
@@ -50,8 +52,37 @@ class HomeController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        topStackView.leftButton.addTarget(self, action: #selector(handleSetting), for: .touchUpInside)
+        topStackView.midButton.addTarget(self, action: #selector(handleHome), for: .touchUpInside)
+        
+        
         setupMainStackView()
         setupCard()
+        
+    }
+    @objc func handleHome() {
+        UIView.animate(withDuration: 0.5) {
+            self.menu.view.transform = .identity
+        }
+//        menu.removeFromParent()
+//        menu.view.removeFromSuperview()
+    }
+    @objc func handleSetting() {
+        menu.view.frame = CGRect(x: -menuWidth, y: 0, width: menuWidth, height: self.view.frame.height)
+        UIView.animate(withDuration: 0.5) {
+            //method 1
+//            self.menu.view.frame = CGRect(x: 0, y: 0, width: self.menuWidth, height: self.view.frame.height)
+            //method 2
+            self.menu.view.transform = CGAffineTransform(translationX: self.menuWidth, y: 0)
+        }
+        //method 1
+//        let keyWindow = UIApplication.shared.windows.filter {$0.isKeyWindow}.first
+//        keyWindow?.addSubview(menu.view)
+        //method 2
+        view.addSubview(menu.view)
+        //used to solve problem
+        addChild(menu)
+        
     }
 
 

@@ -9,16 +9,20 @@
 import UIKit
 
 class TopNavigationStackView: UIStackView {
-    let left = UIButton(type: .system)
-    let mid = UIButton(type: .system)
+    let leftButton = UIButton(type: .system)
+    let midButton = UIButton(type: .system)
     let right = UIButton(type: .system)
     override init(frame: CGRect) {
         super.init(frame: frame)
-        left.setImage(UIImage(systemName: "list.bullet")?.withRenderingMode(.alwaysOriginal), for: .normal)
-        mid.setImage(UIImage(systemName: "house")?.withRenderingMode(.alwaysOriginal), for: .normal)
+        leftButton.setImage(UIImage(systemName: "list.bullet")?.withRenderingMode(.alwaysOriginal), for: .normal)
+        let configLeft = UIImage.SymbolConfiguration(pointSize: 32, weight: .semibold)
+        leftButton.setPreferredSymbolConfiguration(configLeft, forImageIn: .normal)
+        midButton.setImage(UIImage(systemName: "house")?.withRenderingMode(.alwaysOriginal), for: .normal)
+        let configMid = UIImage.SymbolConfiguration(pointSize: 32, weight: .semibold)
+        midButton.setPreferredSymbolConfiguration(configMid, forImageIn: .normal)
 //        right.setImage(UIImage(systemName: "message")?.withRenderingMode(.alwaysOriginal), for: .normal)
-        addArrangedSubview(left)
-        addArrangedSubview(mid)
+        addArrangedSubview(leftButton)
+        addArrangedSubview(midButton)
 //        addArrangedSubview(right)
         self.distribution = .fillEqually
         self.translatesAutoresizingMaskIntoConstraints = false
