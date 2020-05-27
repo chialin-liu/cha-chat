@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		F3838F0D247A9C6600E3E7AF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3838F0C247A9C6600E3E7AF /* AppDelegate.swift */; };
-		F3838F0F247A9C6600E3E7AF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3838F0E247A9C6600E3E7AF /* SceneDelegate.swift */; };
 		F3838F11247A9C6600E3E7AF /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3838F10247A9C6600E3E7AF /* HomeController.swift */; };
 		F3838F14247A9C6600E3E7AF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F3838F12247A9C6600E3E7AF /* Main.storyboard */; };
 		F3838F16247A9C6700E3E7AF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F3838F15247A9C6700E3E7AF /* Assets.xcassets */; };
@@ -20,12 +19,12 @@
 		F3838F31247BD4BA00E3E7AF /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3838F30247BD4BA00E3E7AF /* UIView.swift */; };
 		F3838F35247C102C00E3E7AF /* CardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3838F34247C102C00E3E7AF /* CardViewModel.swift */; };
 		F3838F57247D54E700E3E7AF /* MenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3838F56247D54E700E3E7AF /* MenuTableViewController.swift */; };
+		F3838F59247E1D9E00E3E7AF /* BaseSlideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3838F58247E1D9E00E3E7AF /* BaseSlideViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		F3838F09247A9C6600E3E7AF /* cha-chat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "cha-chat.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3838F0C247A9C6600E3E7AF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		F3838F0E247A9C6600E3E7AF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		F3838F10247A9C6600E3E7AF /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
 		F3838F13247A9C6600E3E7AF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F3838F15247A9C6700E3E7AF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -38,6 +37,7 @@
 		F3838F30247BD4BA00E3E7AF /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		F3838F34247C102C00E3E7AF /* CardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewModel.swift; sourceTree = "<group>"; };
 		F3838F56247D54E700E3E7AF /* MenuTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableViewController.swift; sourceTree = "<group>"; };
+		F3838F58247E1D9E00E3E7AF /* BaseSlideViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseSlideViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,7 +76,6 @@
 				F3838F2C247B539600E3E7AF /* Models */,
 				F3838F25247AA84500E3E7AF /* Views */,
 				F3838F0C247A9C6600E3E7AF /* AppDelegate.swift */,
-				F3838F0E247A9C6600E3E7AF /* SceneDelegate.swift */,
 				F3838F12247A9C6600E3E7AF /* Main.storyboard */,
 				F3838F15247A9C6700E3E7AF /* Assets.xcassets */,
 				F3838F17247A9C6700E3E7AF /* LaunchScreen.storyboard */,
@@ -116,6 +115,7 @@
 			children = (
 				F3838F10247A9C6600E3E7AF /* HomeController.swift */,
 				F3838F56247D54E700E3E7AF /* MenuTableViewController.swift */,
+				F3838F58247E1D9E00E3E7AF /* BaseSlideViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -202,11 +202,11 @@
 				F3838F31247BD4BA00E3E7AF /* UIView.swift in Sources */,
 				F3838F11247A9C6600E3E7AF /* HomeController.swift in Sources */,
 				F3838F57247D54E700E3E7AF /* MenuTableViewController.swift in Sources */,
+				F3838F59247E1D9E00E3E7AF /* BaseSlideViewController.swift in Sources */,
 				F3838F27247AA88B00E3E7AF /* HomeBottomControllerStackView.swift in Sources */,
 				F3838F29247AB29D00E3E7AF /* TopNavigationStackView.swift in Sources */,
 				F3838F0D247A9C6600E3E7AF /* AppDelegate.swift in Sources */,
 				F3838F2B247ABA9500E3E7AF /* CardView.swift in Sources */,
-				F3838F0F247A9C6600E3E7AF /* SceneDelegate.swift in Sources */,
 				F3838F2E247B53A100E3E7AF /* User.swift in Sources */,
 				F3838F35247C102C00E3E7AF /* CardViewModel.swift in Sources */,
 			);

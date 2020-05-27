@@ -62,17 +62,22 @@ class HomeController: UIViewController {
         addChild(menu)
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        topStackView.leftButton.addTarget(self, action: #selector(handleSetting), for: .touchUpInside)
-        topStackView.midButton.addTarget(self, action: #selector(handleHome), for: .touchUpInside)
-        setupMainStackView()
-        setupCard()
-        setupMenu()
+    fileprivate func setupPanGesture() {
         //pan gesture
         let panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePan))
         view.addGestureRecognizer(panGesture)
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Do any additional setup after loading the view.
+        view.backgroundColor = .white
+        topStackView.leftButton.addTarget(self, action: #selector(openMenu), for: .touchUpInside)
+        topStackView.midButton.addTarget(self, action: #selector(closeMenu), for: .touchUpInside)
+        setupMainStackView()
+        setupCard()
+        setupMenu()
+        setupPanGesture()
         
         setupDarkCoverView()
     }
@@ -108,15 +113,15 @@ class HomeController: UIViewController {
         } else if gesture.state == .ended {
             if isMenuOpen {
                 if abs(translation.x) < menuWidth / 3 {
-                    handleSetting()
+                    openMenu()
                 } else {
-                    handleHome()
+                    closeMenu()
                 }
             } else {
                 if translation.x < menuWidth / 3 {
-                    handleHome()
+                    closeMenu()
                 } else {
-                    handleSetting()
+                    openMenu()
                 }
             }
         }
@@ -131,7 +136,7 @@ class HomeController: UIViewController {
             
         }
     }
-    @objc func handleHome() {
+    @objc func closeMenu() {
 //        removeDarkCoverView()
         darkCoverView.alpha = 0
         performeAnimations(transform: .identity)
@@ -140,7 +145,7 @@ class HomeController: UIViewController {
 //        menu.removeFromParent()
 //        menu.view.removeFromSuperview()
     }
-    @objc func handleSetting() {
+    @objc func openMenu() {
 //        setupMenu()
 //        setupDarkCoverView()
         darkCoverView.alpha = 1
