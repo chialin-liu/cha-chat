@@ -14,6 +14,7 @@ class MenuTableViewController: UITableViewController {
         MenuItem(image: UIImage(systemName: "person.circle")?.withRenderingMode(.alwaysOriginal) ?? UIImage(), title: "Profile"),
         MenuItem(image: UIImage(systemName: "message")?.withRenderingMode(.alwaysOriginal) ?? UIImage(), title: "Message"),
         MenuItem(image: UIImage(systemName: "person.3")?.withRenderingMode(.alwaysOriginal) ?? UIImage(), title: "Friends"),
+        MenuItem(image: UIImage(systemName: "location")?.withRenderingMode(.alwaysOriginal) ?? UIImage(), title: "Location"),
     ]
     override func viewDidLoad() {
         super.viewDidLoad()

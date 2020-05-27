@@ -13,18 +13,19 @@ class DarkCoverView: UIView {}
 class BaseSlideViewController: UIViewController {
     let menuWidth: CGFloat = 300
     var redViewLeadingConstraint: NSLayoutConstraint!
+    var redViewTrailingConstraint: NSLayoutConstraint!
     let homeController = HomeController()
     let menuController = MenuTableViewController()
     let redView: RightContainerView = {
         let v = RightContainerView()
-        v.backgroundColor = .red
+        v.backgroundColor = .white
         v.translatesAutoresizingMaskIntoConstraints = false
         return v
     }()
     
     let blueView: MenuContainerView = {
         let v = MenuContainerView()
-        v.backgroundColor = .blue
+        v.backgroundColor = .white
         v.translatesAutoresizingMaskIntoConstraints = false
         return v
     }()
@@ -40,7 +41,7 @@ class BaseSlideViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .yellow
         setupViews()
-        homeController.topStackView.leftButton.addTarget(self, action: #selector(openMenu), for: .touchUpInside)
+//        homeController.topStackView.leftButton.addTarget(self, action: #selector(openMenu), for: .touchUpInside)
         let panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePan))
         view.addGestureRecognizer(panGesture)
     }
@@ -69,6 +70,7 @@ class BaseSlideViewController: UIViewController {
         x = max(0, x)
         
         redViewLeadingConstraint.constant = x
+        redViewTrailingConstraint.constant = x
         darkCoverView.alpha = x / menuWidth
         
         if gesture.state == .ended {
@@ -87,38 +89,49 @@ class BaseSlideViewController: UIViewController {
     @objc func openMenu() {
         isMenuOpened = true
         redViewLeadingConstraint.constant = menuWidth
+        redViewTrailingConstraint.constant = menuWidth
         performAnimations()
     }
     var rightViewController: UIViewController?
     func didSelectMenuItem(indexPath: IndexPath) {
         performRightViewCleanUp()
+        closeMenu()
         switch indexPath.row {
-        case 0:
-            break
+//        case 0:
+//            break
 //            redView.addSubview(homeController.view)
 //            addChild(homeController)
+//            rightViewController = homeController
         case 1:
-            let profile = ProfileTableViewController()
+            let vc = UINavigationController(rootViewController: ProfileTableViewController())
             //method 1: is OK
 //            present(profile, animated: true, completion: nil)
             //method 2: no use
 //            navigationController?.pushViewController(profile, animated: true)
             //method 3
-            redView.addSubview(profile.view)
-            addChild(profile)
-            rightViewController = profile
+            redView.addSubview(vc.view)
+            addChild(vc)
+            rightViewController = vc
         case 2:
             let message = MessageTableViewController()
             redView.addSubview(message.view)
             addChild(message)
             rightViewController = message
-        case 3:
-            closeMenu()
+        case 4:
+            let tabBar = UITabBarController()
+            let location = UIViewController()
+            tabBar.viewControllers = [location]
+            location.view.backgroundColor = .orange
+            redView.addSubview(tabBar.view)
+            addChild(tabBar)
+            rightViewController = tabBar
+//        case 3:
+//            break
         default:
             break
         }
         redView.bringSubviewToFront(darkCoverView)
-        closeMenu()
+        
     }
     func performRightViewCleanUp() {
         rightViewController?.removeFromParent()
@@ -126,6 +139,7 @@ class BaseSlideViewController: UIViewController {
     }
     func closeMenu() {
         redViewLeadingConstraint.constant = 0
+        redViewTrailingConstraint.constant = 0
         isMenuOpened = false
         performAnimations()
     }
@@ -135,6 +149,7 @@ class BaseSlideViewController: UIViewController {
             self.darkCoverView.alpha = self.isMenuOpened ? 1 : 0
         })
     }
+    
     func setupViews() {
         view.addSubview(redView)
         view.addSubview(blueView)
@@ -142,7 +157,7 @@ class BaseSlideViewController: UIViewController {
         NSLayoutConstraint.activate([
             redView.topAnchor.constraint(equalTo: view.topAnchor),
             redView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            redView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+//            redView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             
             blueView.topAnchor.constraint(equalTo: view.topAnchor),
 //            blueView.trailingAnchor.constraint(equalTo: redView.safeAreaLayoutGuide.leadingAnchor),
@@ -151,9 +166,10 @@ class BaseSlideViewController: UIViewController {
             blueView.bottomAnchor.constraint(equalTo: redView.bottomAnchor)
             ])
         
-        self.redViewLeadingConstraint = redView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0)
+        redViewLeadingConstraint = redView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0)
         redViewLeadingConstraint.isActive = true
-        
+        redViewTrailingConstraint = redView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
+        redViewTrailingConstraint.isActive = true
         setupViewControllers()
     }
 
