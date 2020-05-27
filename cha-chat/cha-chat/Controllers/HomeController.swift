@@ -72,14 +72,13 @@ class HomeController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         view.backgroundColor = .white
-        topStackView.leftButton.addTarget(self, action: #selector(openMenu), for: .touchUpInside)
-        topStackView.midButton.addTarget(self, action: #selector(closeMenu), for: .touchUpInside)
+//        topStackView.leftButton.addTarget(self, action: #selector(openMenu), for: .touchUpInside)
+//        topStackView.midButton.addTarget(self, action: #selector(closeMenu), for: .touchUpInside)
         setupMainStackView()
         setupCard()
-        setupMenu()
-        setupPanGesture()
-        
-        setupDarkCoverView()
+//        setupMenu()
+//        setupPanGesture()
+//        setupDarkCoverView()
     }
     let darkCoverView = UIView()
     func setupDarkCoverView() {
