@@ -20,6 +20,9 @@
 		F3838F35247C102C00E3E7AF /* CardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3838F34247C102C00E3E7AF /* CardViewModel.swift */; };
 		F3838F57247D54E700E3E7AF /* MenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3838F56247D54E700E3E7AF /* MenuTableViewController.swift */; };
 		F3838F59247E1D9E00E3E7AF /* BaseSlideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3838F58247E1D9E00E3E7AF /* BaseSlideViewController.swift */; };
+		F3838F5B247E926700E3E7AF /* MenuHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3838F5A247E926700E3E7AF /* MenuHeaderView.swift */; };
+		F3838F5D247E9D9200E3E7AF /* MenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3838F5C247E9D9200E3E7AF /* MenuItem.swift */; };
+		F3838F5F247EA08200E3E7AF /* MenuFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3838F5E247EA08200E3E7AF /* MenuFooterView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +41,9 @@
 		F3838F34247C102C00E3E7AF /* CardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewModel.swift; sourceTree = "<group>"; };
 		F3838F56247D54E700E3E7AF /* MenuTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableViewController.swift; sourceTree = "<group>"; };
 		F3838F58247E1D9E00E3E7AF /* BaseSlideViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseSlideViewController.swift; sourceTree = "<group>"; };
+		F3838F5A247E926700E3E7AF /* MenuHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuHeaderView.swift; sourceTree = "<group>"; };
+		F3838F5C247E9D9200E3E7AF /* MenuItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItem.swift; sourceTree = "<group>"; };
+		F3838F5E247EA08200E3E7AF /* MenuFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuFooterView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +96,8 @@
 				F3838F26247AA88B00E3E7AF /* HomeBottomControllerStackView.swift */,
 				F3838F28247AB29D00E3E7AF /* TopNavigationStackView.swift */,
 				F3838F2A247ABA9500E3E7AF /* CardView.swift */,
+				F3838F5A247E926700E3E7AF /* MenuHeaderView.swift */,
+				F3838F5E247EA08200E3E7AF /* MenuFooterView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -98,6 +106,7 @@
 			isa = PBXGroup;
 			children = (
 				F3838F2D247B53A100E3E7AF /* User.swift */,
+				F3838F5C247E9D9200E3E7AF /* MenuItem.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -199,6 +208,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F3838F5F247EA08200E3E7AF /* MenuFooterView.swift in Sources */,
 				F3838F31247BD4BA00E3E7AF /* UIView.swift in Sources */,
 				F3838F11247A9C6600E3E7AF /* HomeController.swift in Sources */,
 				F3838F57247D54E700E3E7AF /* MenuTableViewController.swift in Sources */,
@@ -207,6 +217,8 @@
 				F3838F29247AB29D00E3E7AF /* TopNavigationStackView.swift in Sources */,
 				F3838F0D247A9C6600E3E7AF /* AppDelegate.swift in Sources */,
 				F3838F2B247ABA9500E3E7AF /* CardView.swift in Sources */,
+				F3838F5B247E926700E3E7AF /* MenuHeaderView.swift in Sources */,
+				F3838F5D247E9D9200E3E7AF /* MenuItem.swift in Sources */,
 				F3838F2E247B53A100E3E7AF /* User.swift in Sources */,
 				F3838F35247C102C00E3E7AF /* CardViewModel.swift in Sources */,
 			);

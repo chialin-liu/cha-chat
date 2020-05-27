@@ -95,7 +95,6 @@ class BaseSlideViewController: UIViewController {
     }
     fileprivate func performAnimations() {
         UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
-            // leave a reference link down in desc below
             self.view.layoutIfNeeded()
             self.darkCoverView.alpha = self.isMenuOpened ? 1 : 0
         })
@@ -104,7 +103,6 @@ class BaseSlideViewController: UIViewController {
         view.addSubview(redView)
         view.addSubview(blueView)
         
-        // let's go ahead and use Auto Layout
         NSLayoutConstraint.activate([
             redView.topAnchor.constraint(equalTo: view.topAnchor),
             redView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
@@ -123,9 +121,7 @@ class BaseSlideViewController: UIViewController {
         setupViewControllers()
     }
 
-    func setupViewControllers() {
-            // let's add back our HomeController into the redView
-            
+    func setupViewControllers() {            
             
             let homeView = homeController.view!
             let menuView = menuController.view!
