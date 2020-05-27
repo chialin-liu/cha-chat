@@ -10,6 +10,7 @@ import UIKit
 
 class MenuTableViewController: UITableViewController {
     let menuItems = [
+        MenuItem(image: UIImage(systemName: "house")?.withRenderingMode(.alwaysOriginal) ?? UIImage(), title: "Home"),
         MenuItem(image: UIImage(systemName: "person.circle")?.withRenderingMode(.alwaysOriginal) ?? UIImage(), title: "Profile"),
         MenuItem(image: UIImage(systemName: "message")?.withRenderingMode(.alwaysOriginal) ?? UIImage(), title: "Message"),
         MenuItem(image: UIImage(systemName: "person.3")?.withRenderingMode(.alwaysOriginal) ?? UIImage(), title: "Friends"),
@@ -22,7 +23,10 @@ class MenuTableViewController: UITableViewController {
     }
 
     // MARK: - Table view data source
-
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let slidingController = UIApplication.shared.keyWindow?.rootViewController as? BaseSlideViewController
+        slidingController?.didSelectMenuItem(indexPath: indexPath)
+    }
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 80
     }

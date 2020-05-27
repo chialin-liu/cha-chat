@@ -7,28 +7,30 @@
 //
 
 import UIKit
-
+class RightContainerView: UIView {}
+class MenuContainerView: UIView {}
+class DarkCoverView: UIView {}
 class BaseSlideViewController: UIViewController {
     let menuWidth: CGFloat = 300
     var redViewLeadingConstraint: NSLayoutConstraint!
     let homeController = HomeController()
     let menuController = MenuTableViewController()
-    let redView: UIView = {
-        let v = UIView()
+    let redView: RightContainerView = {
+        let v = RightContainerView()
         v.backgroundColor = .red
         v.translatesAutoresizingMaskIntoConstraints = false
         return v
     }()
     
-    let blueView: UIView = {
-        let v = UIView()
+    let blueView: MenuContainerView = {
+        let v = MenuContainerView()
         v.backgroundColor = .blue
         v.translatesAutoresizingMaskIntoConstraints = false
         return v
     }()
     
-    let darkCoverView: UIView = {
-        let v = UIView()
+    let darkCoverView: DarkCoverView = {
+        let v = DarkCoverView()
         v.backgroundColor = UIColor(white: 0, alpha: 0.7)
         v.alpha = 0
         v.translatesAutoresizingMaskIntoConstraints = false
@@ -82,13 +84,47 @@ class BaseSlideViewController: UIViewController {
                 
             }
         }
-    @objc fileprivate func openMenu() {
+    @objc func openMenu() {
         isMenuOpened = true
         redViewLeadingConstraint.constant = menuWidth
         performAnimations()
     }
-    
-    fileprivate func closeMenu() {
+    var rightViewController: UIViewController?
+    func didSelectMenuItem(indexPath: IndexPath) {
+        performRightViewCleanUp()
+        switch indexPath.row {
+        case 0:
+            break
+//            redView.addSubview(homeController.view)
+//            addChild(homeController)
+        case 1:
+            let profile = ProfileTableViewController()
+            //method 1: is OK
+//            present(profile, animated: true, completion: nil)
+            //method 2: no use
+//            navigationController?.pushViewController(profile, animated: true)
+            //method 3
+            redView.addSubview(profile.view)
+            addChild(profile)
+            rightViewController = profile
+        case 2:
+            let message = MessageTableViewController()
+            redView.addSubview(message.view)
+            addChild(message)
+            rightViewController = message
+        case 3:
+            closeMenu()
+        default:
+            break
+        }
+        redView.bringSubviewToFront(darkCoverView)
+        closeMenu()
+    }
+    func performRightViewCleanUp() {
+        rightViewController?.removeFromParent()
+        rightViewController?.view.removeFromSuperview()
+    }
+    func closeMenu() {
         redViewLeadingConstraint.constant = 0
         isMenuOpened = false
         performAnimations()
@@ -125,7 +161,6 @@ class BaseSlideViewController: UIViewController {
             
             let homeView = homeController.view!
             let menuView = menuController.view!
-            
             homeView.translatesAutoresizingMaskIntoConstraints = false
             menuView.translatesAutoresizingMaskIntoConstraints = false
             

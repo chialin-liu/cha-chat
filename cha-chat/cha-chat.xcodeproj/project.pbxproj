@@ -23,6 +23,8 @@
 		F3838F5B247E926700E3E7AF /* MenuHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3838F5A247E926700E3E7AF /* MenuHeaderView.swift */; };
 		F3838F5D247E9D9200E3E7AF /* MenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3838F5C247E9D9200E3E7AF /* MenuItem.swift */; };
 		F3838F5F247EA08200E3E7AF /* MenuFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3838F5E247EA08200E3E7AF /* MenuFooterView.swift */; };
+		F3838F61247EABE400E3E7AF /* MessageTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3838F60247EABE400E3E7AF /* MessageTableViewController.swift */; };
+		F3838F63247EACE700E3E7AF /* ProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3838F62247EACE700E3E7AF /* ProfileTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +46,8 @@
 		F3838F5A247E926700E3E7AF /* MenuHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuHeaderView.swift; sourceTree = "<group>"; };
 		F3838F5C247E9D9200E3E7AF /* MenuItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItem.swift; sourceTree = "<group>"; };
 		F3838F5E247EA08200E3E7AF /* MenuFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuFooterView.swift; sourceTree = "<group>"; };
+		F3838F60247EABE400E3E7AF /* MessageTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageTableViewController.swift; sourceTree = "<group>"; };
+		F3838F62247EACE700E3E7AF /* ProfileTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,6 +129,8 @@
 				F3838F10247A9C6600E3E7AF /* HomeController.swift */,
 				F3838F56247D54E700E3E7AF /* MenuTableViewController.swift */,
 				F3838F58247E1D9E00E3E7AF /* BaseSlideViewController.swift */,
+				F3838F60247EABE400E3E7AF /* MessageTableViewController.swift */,
+				F3838F62247EACE700E3E7AF /* ProfileTableViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -214,6 +220,8 @@
 				F3838F57247D54E700E3E7AF /* MenuTableViewController.swift in Sources */,
 				F3838F59247E1D9E00E3E7AF /* BaseSlideViewController.swift in Sources */,
 				F3838F27247AA88B00E3E7AF /* HomeBottomControllerStackView.swift in Sources */,
+				F3838F63247EACE700E3E7AF /* ProfileTableViewController.swift in Sources */,
+				F3838F61247EABE400E3E7AF /* MessageTableViewController.swift in Sources */,
 				F3838F29247AB29D00E3E7AF /* TopNavigationStackView.swift in Sources */,
 				F3838F0D247A9C6600E3E7AF /* AppDelegate.swift in Sources */,
 				F3838F2B247ABA9500E3E7AF /* CardView.swift in Sources */,
