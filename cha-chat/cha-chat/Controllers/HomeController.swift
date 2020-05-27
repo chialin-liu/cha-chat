@@ -74,13 +74,13 @@ class HomeController: UIViewController {
         let panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePan))
         view.addGestureRecognizer(panGesture)
         
-        
+        setupDarkCoverView()
     }
     let darkCoverView = UIView()
     func setupDarkCoverView() {
         darkCoverView.frame = view.frame
         view.addSubview(darkCoverView)
-        darkCoverView.alpha = 1
+        darkCoverView.alpha = 0
         darkCoverView.backgroundColor = UIColor(white: 0, alpha: 0.5)
     }
     func removeDarkCoverView() {
@@ -103,7 +103,7 @@ class HomeController: UIViewController {
 //            menu.view.transform = transform
             view.transform = transform
 //            view.addSubview(darkCoverView)
-//            darkCoverView.alpha = 0.6
+            darkCoverView.alpha = x / menuWidth
 //            darkCoverView.backgroundColor = UIColor(white: 0, alpha: 0.6)
         } else if gesture.state == .ended {
             if isMenuOpen {
@@ -142,7 +142,8 @@ class HomeController: UIViewController {
     }
     @objc func handleSetting() {
 //        setupMenu()
-        setupDarkCoverView()
+//        setupDarkCoverView()
+        darkCoverView.alpha = 1
         performeAnimations(transform: CGAffineTransform(translationX: self.menuWidth, y: 0))
         isMenuOpen = true
         
