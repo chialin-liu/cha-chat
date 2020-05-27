@@ -73,10 +73,25 @@ class HomeController: UIViewController {
         //pan gesture
         let panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePan))
         view.addGestureRecognizer(panGesture)
+        
+        
+    }
+    let darkCoverView = UIView()
+    func setupDarkCoverView() {
+        darkCoverView.frame = view.frame
+        view.addSubview(darkCoverView)
+        darkCoverView.alpha = 1
+        darkCoverView.backgroundColor = UIColor(white: 0, alpha: 0.5)
+    }
+    func removeDarkCoverView() {
+        darkCoverView.removeFromSuperview()
     }
     @objc func handlePan(gesture: UIPanGestureRecognizer) {
         let translation = gesture.translation(in: view)
-        if gesture.state == .changed {
+        if gesture.state == .began {
+//            view.addSubview(darkCoverView)
+//            darkCoverView.backgroundColor = UIColor(white: 0, alpha: 0.5)
+        } else if gesture.state == .changed {
             
             var x = translation.x
             if isMenuOpen {
@@ -87,6 +102,9 @@ class HomeController: UIViewController {
             let transform = CGAffineTransform(translationX: x, y: 0)
 //            menu.view.transform = transform
             view.transform = transform
+//            view.addSubview(darkCoverView)
+//            darkCoverView.alpha = 0.6
+//            darkCoverView.backgroundColor = UIColor(white: 0, alpha: 0.6)
         } else if gesture.state == .ended {
             if isMenuOpen {
                 if abs(translation.x) < menuWidth / 3 {
@@ -114,15 +132,20 @@ class HomeController: UIViewController {
         }
     }
     @objc func handleHome() {
+//        removeDarkCoverView()
+        darkCoverView.alpha = 0
         performeAnimations(transform: .identity)
         isMenuOpen = false
+        
 //        menu.removeFromParent()
 //        menu.view.removeFromSuperview()
     }
     @objc func handleSetting() {
 //        setupMenu()
+        setupDarkCoverView()
         performeAnimations(transform: CGAffineTransform(translationX: self.menuWidth, y: 0))
         isMenuOpen = true
+        
     }
 
 
