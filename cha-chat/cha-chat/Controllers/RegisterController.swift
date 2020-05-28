@@ -16,8 +16,11 @@ class RegisterController: UIViewController {
         button.titleLabel?.font = UIFont.systemFont(ofSize: 32, weight: .heavy)
         button.backgroundColor = .white
         button.setTitleColor(.black, for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
         button.heightAnchor.constraint(equalToConstant: 275).isActive = true
+        button.widthAnchor.constraint(equalToConstant: 275).isActive = true
         button.layer.cornerRadius = 16
+        
         return button
     }()
     
@@ -52,15 +55,25 @@ class RegisterController: UIViewController {
         button.layer.cornerRadius = 22
         return button
     }()
-    lazy var stackView = UIStackView(arrangedSubviews: [
-        selectPhotoButton,
+    lazy var verticalStackView: UIStackView = {
+       let sv = UIStackView(arrangedSubviews: [
         fullNameTextField,
         emailTextField,
         passwordTextField,
         registerButton
+       ])
+        sv.axis = .vertical
+        sv.distribution = .fillEqually
+        sv.spacing = 5
+        return sv
+    }()
+    lazy var stackView = UIStackView(arrangedSubviews: [
+        selectPhotoButton,
+        verticalStackView
     ])
     fileprivate func setupStackView() {
-        stackView.axis = .vertical
+        stackView.axis = .horizontal
+        
         stackView.spacing = 8
         stackView.translatesAutoresizingMaskIntoConstraints = false
         //        stackView.topAnchor.constraint(equalTo: view.topAnchor, constant: 100).isActive = true
@@ -110,14 +123,27 @@ class RegisterController: UIViewController {
         self.view.transform = CGAffineTransform(translationX: 0, y: -difference - 8)
     }
     fileprivate func setupGradientLayer() {
-        let gradientLayer = CAGradientLayer()
+        
         let topColor = UIColor(red: 80/255, green: 200/255, blue: 120/255, alpha: 1)
         let bottomColor = UIColor(red: 0/255, green: 0/255, blue: 128/255, alpha: 1)
         // make sure to user cgColor
         gradientLayer.colors = [topColor.cgColor, bottomColor.cgColor]
         gradientLayer.locations = [0, 1]
         view.layer.addSublayer(gradientLayer)
+        
+    }
+    //fix issue: register autolayout #3
+    let gradientLayer = CAGradientLayer()
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
         gradientLayer.frame = view.bounds
     }
-
+    //fix issue:
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        if self.traitCollection.verticalSizeClass == .compact {
+            stackView.axis = .horizontal
+        } else {
+            stackView.axis = .vertical
+        }
+    }
 }
