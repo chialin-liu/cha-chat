@@ -27,6 +27,7 @@
 		F3838F63247EACE700E3E7AF /* ProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3838F62247EACE700E3E7AF /* ProfileTableViewController.swift */; };
 		F3838F65247F3F3E00E3E7AF /* RegisterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3838F64247F3F3E00E3E7AF /* RegisterController.swift */; };
 		F3838F67247F449800E3E7AF /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3838F66247F449800E3E7AF /* CustomTextField.swift */; };
+		F3838F69248004BF00E3E7AF /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3838F68248004BF00E3E7AF /* RegisterViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +53,7 @@
 		F3838F62247EACE700E3E7AF /* ProfileTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewController.swift; sourceTree = "<group>"; };
 		F3838F64247F3F3E00E3E7AF /* RegisterController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterController.swift; sourceTree = "<group>"; };
 		F3838F66247F449800E3E7AF /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
+		F3838F68248004BF00E3E7AF /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,6 +139,7 @@
 				F3838F60247EABE400E3E7AF /* MessageTableViewController.swift */,
 				F3838F62247EACE700E3E7AF /* ProfileTableViewController.swift */,
 				F3838F64247F3F3E00E3E7AF /* RegisterController.swift */,
+				F3838F68248004BF00E3E7AF /* RegisterViewModel.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -227,6 +230,7 @@
 				F3838F59247E1D9E00E3E7AF /* BaseSlideViewController.swift in Sources */,
 				F3838F27247AA88B00E3E7AF /* HomeBottomControllerStackView.swift in Sources */,
 				F3838F63247EACE700E3E7AF /* ProfileTableViewController.swift in Sources */,
+				F3838F69248004BF00E3E7AF /* RegisterViewModel.swift in Sources */,
 				F3838F61247EABE400E3E7AF /* MessageTableViewController.swift in Sources */,
 				F3838F67247F449800E3E7AF /* CustomTextField.swift in Sources */,
 				F3838F29247AB29D00E3E7AF /* TopNavigationStackView.swift in Sources */,

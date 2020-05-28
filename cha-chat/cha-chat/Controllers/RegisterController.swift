@@ -28,6 +28,7 @@ class RegisterController: UIViewController {
         let tf = CustomTextField()
         tf.placeholder = "Enter full name"
         tf.backgroundColor = .white
+        tf.addTarget(self, action: #selector(handleTextChange), for: .editingChanged)
         return tf
     }()
     let emailTextField: CustomTextField = {
@@ -35,6 +36,7 @@ class RegisterController: UIViewController {
         tf.placeholder = "Enter email"
         tf.keyboardType = .emailAddress
         tf.backgroundColor = .white
+        tf.addTarget(self, action: #selector(handleTextChange), for: .editingChanged)
         return tf
     }()
     let passwordTextField: CustomTextField = {
@@ -42,15 +44,56 @@ class RegisterController: UIViewController {
         tf.placeholder = "Enter password"
         tf.isSecureTextEntry = true
         tf.backgroundColor = .white
+        tf.addTarget(self, action: #selector(handleTextChange), for: .editingChanged)
         return tf
     }()
-    
+    let registerViewMode = RegisterViewModel()
+    func setupRegisterViewModelObserver() {
+        //fix issue retain cycle: unowned self
+        registerViewMode.isFormValidObserver = { [unowned self](isFormValid) in
+            if isFormValid {
+                self.registerButton.isEnabled = true
+                self.registerButton.backgroundColor = UIColor(red: 0/255, green: 255/255, blue: 128/255, alpha: 1)
+                self.registerButton.setTitleColor(.black, for: .normal)
+            } else {
+                self.registerButton.isEnabled = false
+                self.registerButton.backgroundColor = .lightGray
+                self.registerButton.setTitleColor(.gray, for: .disabled)
+            }
+        }
+    }
+    @objc func handleTextChange(textField: UITextField) {
+        if textField == fullNameTextField {
+            registerViewMode.fullName = fullNameTextField.text
+        } else if textField == emailTextField {
+            registerViewMode.email = emailTextField.text
+        } else {
+            registerViewMode.password = passwordTextField.text
+        }
+        //without MVVM, registerViewModel
+        
+//        if fullNameTextField.text?.isEmpty == false && emailTextField.text?.isEmpty == false && passwordTextField.text?.isEmpty == false {
+//            registerButton.isEnabled = true
+//            registerButton.backgroundColor = UIColor(red: 0/255, green: 255/255, blue: 128/255, alpha: 1)
+//            registerButton.setTitleColor(.black, for: .normal)
+//        } else {
+//            registerButton.isEnabled = false
+//            registerButton.backgroundColor = .lightGray
+//            registerButton.setTitleColor(.gray, for: .disabled)
+//        }
+    }
+
     let registerButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Register", for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .heavy)
-        button.backgroundColor = UIColor(red: 0/255, green: 255/255, blue: 128/255, alpha: 1)
+//        button.backgroundColor = UIColor(red: 0/255, green: 255/255, blue: 128/255, alpha: 1)
+        //disable button
+        button.backgroundColor = .lightGray
+        button.setTitleColor(.gray, for: .disabled)
+        button.isEnabled = false
+        //
         button.heightAnchor.constraint(equalToConstant: 44).isActive = true
         button.layer.cornerRadius = 22
         return button
@@ -72,7 +115,7 @@ class RegisterController: UIViewController {
         verticalStackView
     ])
     fileprivate func setupStackView() {
-        stackView.axis = .horizontal
+        stackView.axis = .vertical
         
         stackView.spacing = 8
         stackView.translatesAutoresizingMaskIntoConstraints = false
@@ -92,6 +135,7 @@ class RegisterController: UIViewController {
         setupStackView()
         setupNotificationObservers()
         tapGesture()
+        setupRegisterViewModelObserver()
     }
     //close the keyboard when tapping
     func tapGesture() {
@@ -138,7 +182,7 @@ class RegisterController: UIViewController {
         super.viewWillLayoutSubviews()
         gradientLayer.frame = view.bounds
     }
-    //fix issue:
+    //fix issue: #4
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         if self.traitCollection.verticalSizeClass == .compact {
             stackView.axis = .horizontal
