@@ -52,31 +52,63 @@ class RegisterController: UIViewController {
         button.layer.cornerRadius = 22
         return button
     }()
-
+    lazy var stackView = UIStackView(arrangedSubviews: [
+        selectPhotoButton,
+        fullNameTextField,
+        emailTextField,
+        passwordTextField,
+        registerButton
+    ])
+    fileprivate func setupStackView() {
+        stackView.axis = .vertical
+        stackView.spacing = 8
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        //        stackView.topAnchor.constraint(equalTo: view.topAnchor, constant: 100).isActive = true
+        stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50).isActive = true
+        stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -50).isActive = true
+        //        stackView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -50).isActive = true
+        stackView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         setupGradientLayer()
         view.backgroundColor = .red
-        
-        let stackView = UIStackView(arrangedSubviews: [
-            selectPhotoButton,
-            fullNameTextField,
-            emailTextField,
-            passwordTextField,
-            registerButton
-            ])
         view.addSubview(stackView)
-        stackView.axis = .vertical
-        stackView.spacing = 8
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-//        stackView.topAnchor.constraint(equalTo: view.topAnchor, constant: 100).isActive = true
-        stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50).isActive = true
-        stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -50).isActive = true
-//        stackView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -50).isActive = true
-        stackView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        setupStackView()
+        setupNotificationObservers()
+        tapGesture()
     }
-    
+    //close the keyboard when tapping
+    func tapGesture() {
+        view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleTap)))
+    }
+    @objc func handleTap() {
+        view.endEditing(true)
+        view.transform = .identity
+    }
+    func setupNotificationObservers() {
+        NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    //resolve: retain cycle
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        NotificationCenter.default.removeObserver(self) // you'll have a retain cycle
+    }
+    @objc fileprivate func handleKeyboardHide() {
+        self.view.transform = .identity
+    }
+    @objc fileprivate func handleKeyboardShow(notification: Notification) {
+        guard let value = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else { return }
+        let keyboardFrame = value.cgRectValue
+        let bottomSpace = view.frame.height - stackView.frame.origin.y - stackView.frame.height
+//        print(bottomSpace)
+        
+        let difference = keyboardFrame.height - bottomSpace
+        self.view.transform = CGAffineTransform(translationX: 0, y: -difference - 8)
+    }
     fileprivate func setupGradientLayer() {
         let gradientLayer = CAGradientLayer()
         let topColor = UIColor(red: 80/255, green: 200/255, blue: 120/255, alpha: 1)
