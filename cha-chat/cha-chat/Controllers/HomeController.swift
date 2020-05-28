@@ -58,7 +58,7 @@ class HomeController: UIViewController {
         // Do any additional setup after loading the view.
         view.backgroundColor = .white
         topStackView.leftButton.addTarget(self, action: #selector(openMenu), for: .touchUpInside)
-        topStackView.midButton.addTarget(self, action: #selector(closeMenu), for: .touchUpInside)
+//        topStackView.midButton.addTarget(self, action: #selector(closeMenu), for: .touchUpInside)
         setupMainStackView()
         setupCard()
     }

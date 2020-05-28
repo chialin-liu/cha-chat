@@ -17,7 +17,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         window = UIWindow()
         window?.makeKeyAndVisible()
-        window?.rootViewController = BaseSlideViewController()
+        window?.rootViewController = RegisterController()
+//        window?.rootViewController = BaseSlideViewController()
 //        window?.rootViewController = HomeController()
         return true
     }
