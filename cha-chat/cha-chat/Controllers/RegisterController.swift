@@ -7,7 +7,8 @@
 //
 
 import UIKit
-
+import Firebase
+import JGProgressHUD
 class RegisterController: UIViewController {
     // UI Components
     let selectPhotoButton: UIButton = {
@@ -96,8 +97,35 @@ class RegisterController: UIViewController {
         //
         button.heightAnchor.constraint(equalToConstant: 44).isActive = true
         button.layer.cornerRadius = 22
+        button.addTarget(self, action: #selector(handleRegister), for: .touchUpInside)
         return button
     }()
+    @objc func handleRegister() {
+        handleTap()
+        guard let email = emailTextField.text else { return }
+        guard let password = passwordTextField.text else { return }
+        
+        Auth.auth().createUser(withEmail: email, password: password) { (res, err) in
+            if let err = err {
+//                DispatchQueue.main.asyncAfter(deadline: .now() , execute: showLoadingHUD(error: err))
+                self.showLoadingHUD(error: err)
+                
+            }
+            if let user = res?.user {
+                let uid = user.uid
+                let email = user.email
+                print("User info", uid, "email:", email ?? "")
+            }
+        }
+    }
+    func showLoadingHUD(error: Error) {
+        let hud = JGProgressHUD(style: .light)
+        hud.textLabel.text = "Register Error"
+        hud.detailTextLabel.text = error.localizedDescription
+        hud.shadow = JGProgressHUDShadow(color: .black, offset: .zero, radius: 5.0, opacity: 0.2)
+        hud.show(in: self.view)
+        hud.dismiss(afterDelay: 3, animated: true)
+    }
     lazy var verticalStackView: UIStackView = {
        let sv = UIStackView(arrangedSubviews: [
         fullNameTextField,

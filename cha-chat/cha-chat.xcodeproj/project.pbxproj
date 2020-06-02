@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -29,6 +29,7 @@
 		F3838F65247F3F3E00E3E7AF /* RegisterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3838F64247F3F3E00E3E7AF /* RegisterController.swift */; };
 		F3838F67247F449800E3E7AF /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3838F66247F449800E3E7AF /* CustomTextField.swift */; };
 		F3838F69248004BF00E3E7AF /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3838F68248004BF00E3E7AF /* RegisterViewModel.swift */; };
+		F3838F6B2480254700E3E7AF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F3838F6A2480254700E3E7AF /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +59,7 @@
 		F3838F64247F3F3E00E3E7AF /* RegisterController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterController.swift; sourceTree = "<group>"; };
 		F3838F66247F449800E3E7AF /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		F3838F68248004BF00E3E7AF /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
+		F3838F6A2480254700E3E7AF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,7 +80,6 @@
 				156752BCF6C5C4D7673F57CB /* Pods-cha-chat.debug.xcconfig */,
 				0CBD33C8344D0AC542E15B0E /* Pods-cha-chat.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -121,6 +122,7 @@
 				F3838F15247A9C6700E3E7AF /* Assets.xcassets */,
 				F3838F17247A9C6700E3E7AF /* LaunchScreen.storyboard */,
 				F3838F1A247A9C6700E3E7AF /* Info.plist */,
+				F3838F6A2480254700E3E7AF /* GoogleService-Info.plist */,
 			);
 			path = "cha-chat";
 			sourceTree = "<group>";
@@ -238,6 +240,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F3838F19247A9C6700E3E7AF /* LaunchScreen.storyboard in Resources */,
+				F3838F6B2480254700E3E7AF /* GoogleService-Info.plist in Resources */,
 				F3838F16247A9C6700E3E7AF /* Assets.xcassets in Resources */,
 				F3838F14247A9C6600E3E7AF /* Main.storyboard in Resources */,
 			);
