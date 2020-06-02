@@ -9,6 +9,14 @@
 import UIKit
 import Firebase
 import JGProgressHUD
+extension RegisterController: UIImagePickerControllerDelegate & UINavigationControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        let image = info[.originalImage] as? UIImage
+//        registerViewMode.image = image
+        registerViewMode.bindableImage.value = image
+        dismiss(animated: true, completion: nil)
+    }
+}
 class RegisterController: UIViewController {
     // UI Components
     let selectPhotoButton: UIButton = {
@@ -21,10 +29,16 @@ class RegisterController: UIViewController {
         button.heightAnchor.constraint(equalToConstant: 275).isActive = true
         button.widthAnchor.constraint(equalToConstant: 275).isActive = true
         button.layer.cornerRadius = 16
-        
+        button.imageView?.contentMode = .scaleAspectFill
+        button.addTarget(self, action: #selector(handleSelectPhoto), for: .touchUpInside)
         return button
     }()
     
+    @objc func handleSelectPhoto() {
+        let imagePickerController = UIImagePickerController()
+        imagePickerController.delegate = self
+        present(imagePickerController, animated: true, completion: nil)
+    }
     let fullNameTextField: CustomTextField = {
         let tf = CustomTextField()
         tf.placeholder = "Enter full name"
@@ -51,7 +65,8 @@ class RegisterController: UIViewController {
     let registerViewMode = RegisterViewModel()
     func setupRegisterViewModelObserver() {
         //fix issue retain cycle: unowned self
-        registerViewMode.isFormValidObserver = { [unowned self](isFormValid) in
+        registerViewMode.bindableIsFormValid.bind { [unowned self] (isFormValid) in
+            guard let isFormValid = isFormValid else { return }
             if isFormValid {
                 self.registerButton.isEnabled = true
                 self.registerButton.backgroundColor = UIColor(red: 0/255, green: 255/255, blue: 128/255, alpha: 1)
@@ -62,6 +77,24 @@ class RegisterController: UIViewController {
                 self.registerButton.setTitleColor(.gray, for: .disabled)
             }
         }
+//        registerViewMode.isFormValidObserver = { [unowned self](isFormValid) in
+//            if isFormValid {
+//                self.registerButton.isEnabled = true
+//                self.registerButton.backgroundColor = UIColor(red: 0/255, green: 255/255, blue: 128/255, alpha: 1)
+//                self.registerButton.setTitleColor(.black, for: .normal)
+//            } else {
+//                self.registerButton.isEnabled = false
+//                self.registerButton.backgroundColor = .lightGray
+//                self.registerButton.setTitleColor(.gray, for: .disabled)
+//            }
+//        }
+        registerViewMode.bindableImage.bind { [unowned self] (image) in
+            self.selectPhotoButton.setImage(image?.withRenderingMode(.alwaysOriginal), for: .normal)
+        }
+//        registerViewMode.imageObserver = { [unowned self] (image) in
+//            self.selectPhotoButton.setImage(image?.withRenderingMode(.alwaysOriginal), for: .normal)
+            
+//        }
     }
     @objc func handleTextChange(textField: UITextField) {
         if textField == fullNameTextField {
@@ -180,7 +213,7 @@ class RegisterController: UIViewController {
     //resolve: retain cycle
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        NotificationCenter.default.removeObserver(self) // you'll have a retain cycle
+//        NotificationCenter.default.removeObserver(self) // you'll have a retain cycle
     }
     @objc fileprivate func handleKeyboardHide() {
         self.view.transform = .identity

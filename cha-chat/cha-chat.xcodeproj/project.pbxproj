@@ -30,6 +30,7 @@
 		F3838F67247F449800E3E7AF /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3838F66247F449800E3E7AF /* CustomTextField.swift */; };
 		F3838F69248004BF00E3E7AF /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3838F68248004BF00E3E7AF /* RegisterViewModel.swift */; };
 		F3838F6B2480254700E3E7AF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F3838F6A2480254700E3E7AF /* GoogleService-Info.plist */; };
+		F3D64593248699B800C4454A /* Bindable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D64592248699B800C4454A /* Bindable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -60,6 +61,7 @@
 		F3838F66247F449800E3E7AF /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		F3838F68248004BF00E3E7AF /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
 		F3838F6A2480254700E3E7AF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		F3D64592248699B800C4454A /* Bindable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bindable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -166,7 +168,6 @@
 				F3838F60247EABE400E3E7AF /* MessageTableViewController.swift */,
 				F3838F62247EACE700E3E7AF /* ProfileTableViewController.swift */,
 				F3838F64247F3F3E00E3E7AF /* RegisterController.swift */,
-				F3838F68248004BF00E3E7AF /* RegisterViewModel.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -175,6 +176,8 @@
 			isa = PBXGroup;
 			children = (
 				F3838F34247C102C00E3E7AF /* CardViewModel.swift */,
+				F3838F68248004BF00E3E7AF /* RegisterViewModel.swift */,
+				F3D64592248699B800C4454A /* Bindable.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -297,6 +300,7 @@
 			files = (
 				F3838F5F247EA08200E3E7AF /* MenuFooterView.swift in Sources */,
 				F3838F31247BD4BA00E3E7AF /* UIView.swift in Sources */,
+				F3D64593248699B800C4454A /* Bindable.swift in Sources */,
 				F3838F11247A9C6600E3E7AF /* HomeController.swift in Sources */,
 				F3838F57247D54E700E3E7AF /* MenuTableViewController.swift in Sources */,
 				F3838F59247E1D9E00E3E7AF /* BaseSlideViewController.swift in Sources */,
