@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import Firebase
 class RegisterViewModel {
 //    var image: UIImage? {
 //        didSet {
@@ -41,10 +42,42 @@ class RegisterViewModel {
         bindableIsFormValid.value = isFormValid
         
     }
-    
+    func performRegistration(completion: @escaping (Error?) -> ()) {
+        guard let email = email, let password = password else { return }
+        bindableIsRegistering.value = true
+        Auth.auth().createUser(withEmail: email, password: password) { (res, err) in
+            if let err = err {
+//                self.showLoadingHUD(error: err)
+                completion(err)
+                
+            }
+            let filename = UUID().uuidString
+            let ref = Storage.storage().reference(withPath: "/images/\(filename)")
+            let imageData = self.bindableImage.value?.jpegData(compressionQuality: 0.9) ?? Data()
+            ref.putData(imageData, metadata: nil) { (_, err) in
+                if let err = err {
+//                    self.showLoadingHUD(error: err)
+                    completion(err)
+                }
+                ref.downloadURL { (url, err) in
+                    if let err = err {
+                        completion(err)
+                    }
+                    self.bindableIsRegistering.value = false
+                    print("Download url", url)
+                }
+            }
+            
+            if let user = res?.user {
+                let uid = user.uid
+                let email = user.email
+                print("User info", uid, "email:", email ?? "")
+            }
+        }
+    }
     // Reactive programming
 //    var isFormValidObserver: ((Bool) -> ())?
     var bindableIsFormValid = Bindable<Bool>()
-    
+    var bindableIsRegistering = Bindable<Bool>()
 }
 

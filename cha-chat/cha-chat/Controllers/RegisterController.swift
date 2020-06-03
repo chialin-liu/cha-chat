@@ -30,6 +30,7 @@ class RegisterController: UIViewController {
         button.widthAnchor.constraint(equalToConstant: 275).isActive = true
         button.layer.cornerRadius = 16
         button.imageView?.contentMode = .scaleAspectFill
+        button.clipsToBounds = true
         button.addTarget(self, action: #selector(handleSelectPhoto), for: .touchUpInside)
         return button
     }()
@@ -95,6 +96,14 @@ class RegisterController: UIViewController {
 //            self.selectPhotoButton.setImage(image?.withRenderingMode(.alwaysOriginal), for: .normal)
             
 //        }
+        registerViewMode.bindableIsRegistering.bind { [unowned self] (isRegistering) in
+            if isRegistering == true{
+                self.registerHUD.textLabel.text = "Register"
+                self.registerHUD.show(in: self.view)
+            } else {
+                self.registerHUD.dismiss()
+            }
+        }
     }
     @objc func handleTextChange(textField: UITextField) {
         if textField == fullNameTextField {
@@ -135,29 +144,27 @@ class RegisterController: UIViewController {
     }()
     @objc func handleRegister() {
         handleTap()
-        guard let email = emailTextField.text else { return }
-        guard let password = passwordTextField.text else { return }
-        
-        Auth.auth().createUser(withEmail: email, password: password) { (res, err) in
+//        guard let email = emailTextField.text else { return }
+//        guard let password = passwordTextField.text else { return }
+//        registerViewMode.bindableIsRegistering.value = true
+        registerViewMode.performRegistration { [weak self] (err) in
             if let err = err {
-//                DispatchQueue.main.asyncAfter(deadline: .now() , execute: showLoadingHUD(error: err))
-                self.showLoadingHUD(error: err)
-                
-            }
-            if let user = res?.user {
-                let uid = user.uid
-                let email = user.email
-                print("User info", uid, "email:", email ?? "")
+                self?.showLoadingHUD(error: err)
+                return
             }
         }
+
     }
+    let registerHUD = JGProgressHUD(style: .dark)
     func showLoadingHUD(error: Error) {
+        registerHUD.dismiss()
         let hud = JGProgressHUD(style: .light)
         hud.textLabel.text = "Register Error"
         hud.detailTextLabel.text = error.localizedDescription
         hud.shadow = JGProgressHUDShadow(color: .black, offset: .zero, radius: 5.0, opacity: 0.2)
         hud.show(in: self.view)
         hud.dismiss(afterDelay: 3, animated: true)
+        
     }
     lazy var verticalStackView: UIStackView = {
        let sv = UIStackView(arrangedSubviews: [
